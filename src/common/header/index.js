@@ -6,7 +6,7 @@ import { actionCreators } from './store'
 
 class Header extends Component {
   render () {
-    const { focused, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
         <Logo />
@@ -25,14 +25,14 @@ class Header extends Component {
             >
               <NavSearch
                 className={focused ? 'focused' : ''}
-                onFocus={handleInputFocus}
+                onFocus={() => handleInputFocus(list)}
                 onBlur={handleInputBlur}
               >
               </NavSearch>
             </CSSTransition>
-            <i className={focused ? 'focused iconfont' : 'iconfont'}>
+            <i className={focused ? 'focused iconfont zoom' : 'iconfont zoom'}>
               &#xe60c;
-          </i>
+           </i>
             {this.getListArea()}
           </SearchWarpper>
         </Nav>
@@ -44,10 +44,10 @@ class Header extends Component {
     )
   }
   getListArea () {
-    const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage} = this.props
+    const { focused, list, page, totalPage, mouseIn, handleMouseEnter, handleMouseLeave, handleChangePage } = this.props
     const newList = list.toJS()
     const pageList = []
-    if(newList.length) {
+    if (newList.length) {
       for (let i = ((page - 1) * 10); i < page * 10; i++) {
         if (newList[i]) {
           pageList.push(
@@ -58,9 +58,14 @@ class Header extends Component {
     }
     if (focused || mouseIn) {
       return (
-        <SearchInfo onMouseEnter = {handleMouseEnter} onMouseLeave = {handleMouseLeave}>
+        <SearchInfo onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
           <SearchInfoTitle>热门搜索
-              <SearchInfoSwitch onClick = {() => handleChangePage(page, totalPage)}>换一批</SearchInfoSwitch>
+              <SearchInfoSwitch onClick={() => handleChangePage(page, totalPage, this.spinIcon)}>
+              <i className='spin iconfont' ref = { (icon)=>{ this.spinIcon = icon }}>
+               &#xe606;
+              </i>
+              换一批
+              </SearchInfoSwitch>
           </SearchInfoTitle>
           <SearchInfoList>
             {
@@ -88,25 +93,33 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    handleInputFocus () {
-      dispatch(actionCreators.getList())
+    handleInputFocus (list) {
+      (list.size === 0) && dispatch(actionCreators.getList()) // 避免每次都请求数据
       dispatch(actionCreators.searchFocus())
     },
     handleInputBlur () {
       dispatch(actionCreators.searchBlur())
     },
-    handleMouseEnter(){
+    handleMouseEnter () {
       dispatch(actionCreators.mouseEnter())
     },
-    handleMouseLeave(){
+    handleMouseLeave () {
       dispatch(actionCreators.mouseLeave())
     },
-    handleChangePage(page, totalPage){
-      if (page < totalPage){
+    handleChangePage (page, totalPage, spin) {
+      let originAngle = spin.style.transform.replace(/[^0-9]/ig, '')
+      if(spin.style.transform) {
+        originAngle = parseInt(originAngle)
+      } else {
+        originAngle = 0 
+      }
+      spin.style.transform = 'rotate(' + (originAngle + 360 ) + 'deg)'
+     
+      if (page < totalPage) {
         dispatch(actionCreators.changePage(page + 1))
       } else {
         dispatch(actionCreators.changePage(1))
-      } 
+      }
     }
   }
 }

@@ -49,7 +49,7 @@ export const SearchWarpper = styled.div`
   float: left;
   position: relative;
   
-  .iconfont {
+  .zoom {
     position: absolute;
     bottom: 5px;
     right: 5px;
@@ -146,6 +146,14 @@ export const SearchInfoSwitch = styled.span`
   float: right;
   font-szie: 13px;
   cursor: pointer;
+  .spin{
+    font-size: 13px;
+    margin-right: 2px;
+    transition: all .2s ease-in;
+    display: block;
+    float: left;
+    transform-origin: center center;
+  }
 `
 
 export const SearchInfoList  = styled.div`
