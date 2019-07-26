@@ -152,8 +152,7 @@ export const SearchInfoList  = styled.div`
 `
 export const SearchInfoItem = styled.a`
   font-size: 12px;
-  padding: 0 5px;
-  line-height: 20px;
+  padding: 2px 6px;
   border: 1px solid #b4b4b4;
   color: #787878;
   border-radius: 3px;
