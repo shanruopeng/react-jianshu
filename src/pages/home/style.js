@@ -19,7 +19,7 @@ export const HomeLeft = styled.div`
 `
 
 export const HomeRight = styled.div`
-  width: 240px;
+  width: 280px;
   float: right;
 `
 
@@ -78,5 +78,58 @@ export const ListInfo  = styled.div`
     line-height: 24px;
     font-size: 13px;
     color: #999;
+  }
+`
+export const RecommendWrapper = styled.div`
+  width: 280px;
+  margin: 30px 0;
+`
+
+export const RecommendItem = styled.div`
+  width: 280px;
+  height: 50px;
+  background: url(${(props) => props.imgUrl});
+  background-size: contain;
+  margin-bottom: 6px;
+`
+export const WriterWrapper = styled.div`
+  width: 278px;
+`
+
+export const WriterTitle = styled.div`
+  text-align: left;
+  font-size: 14px;
+  color: #969696;
+  margin: 0 0 20px;
+`
+
+export const WriterItem = styled.div`
+  margin-top: 15px;
+  overflow: hidden;
+  .pic {
+    float: left;
+    width: 48px;
+    height: 48px;
+    margin-right: 10px;
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+  }
+  .nickname {
+    padding: 5px;
+    margin-right: 60px;
+    font-size: 14px;
+  }
+  .total {
+    margin-top: 2px;
+    font-size: 12px;
+    color: #969696;
+  }
+  .follow {
+    float: right;
+    margin-top: 5px;
+    padding: 0;
+    font-size: 13px;
+    color: #42c02e;
   }
 `
