@@ -3,25 +3,24 @@ import { connect } from 'react-redux'
 import { TopicWrapper, TopicItem, TopPicImg } from '../style'
 class Topic extends Component {
   render () {
+    const { list } = this.props
     return (
       <TopicWrapper>
         {
-          this.props.list.map((item)=>{
-            return (
+          list.map((item)=> (
               <TopicItem key={item.get('title')}>
                 <TopPicImg /> 
                 {item.get('title')}
               </TopicItem>
             )
-          })
+          )
         }
-       
       </TopicWrapper>
     )
   }
 }
 const mapState  = (state) => ({
-  list: state.get('home').get('topicList')
+  list: state.getIn(['home', 'topicList'])
 })
 
 const mapDispatch = (state) => ({

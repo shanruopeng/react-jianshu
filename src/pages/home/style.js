@@ -27,6 +27,7 @@ export const TopicWrapper = styled.div`
   padding: 20px 0 10px 0;
   margin-left: -18px;
   overflow: hidden;
+  border-bottom: 1px solid #dcdcdc;
 `
 
 export const TopicItem = styled.div`
@@ -49,4 +50,33 @@ export const TopPicImg = styled.span`
    background: url(${topPicImg});
    background-size: contain;
    margin-right: 10px;
+`
+
+export const ListItem = styled.div`
+  overflow: hidden;
+  padding: 20px 0;
+  border-bottom: 1px solid #dcdcdc;
+  .pic {
+    width: 125px;
+    height: 100px;
+    display: block;
+    float: right;
+    border-radius: 10px;
+  }
+`
+
+export const ListInfo  = styled.div`
+  width: 500px;
+  float: left;
+  .title {
+    line-height: 27px;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+  }
+  .desc {
+    line-height: 24px;
+    font-size: 13px;
+    color: #999;
+  }
 `
