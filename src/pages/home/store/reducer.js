@@ -1,55 +1,22 @@
 import { fromJS } from 'immutable'
 
 const defaultState = fromJS({
-  topicList: [{
-    id: 1,
-    title: '社会热点'
-  },
-  {
-    id: 2,
-    title: '手绘'
-  }],
-  articleList: [{
-    id: 1,
-    title: '有哪些诗词让你觉得是人间绝句？',
-    imgUrl: '//upload.jianshu.io/admin_banners/web_images/4682/cef3102cc521ac4b87a82b5c6f93300ba0aa21c8.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
-    desc: '1、不如归去，孤城越绝三春暮。 —— 朱熹《杜鹃》 2、 我有所念人，隔在远远乡。 我有所感事，结在深深肠。 ——白居易《夜雨》 3、来如春梦几...'
-  }, {
-    id: 2,
-    title: '【年度盘点】10个热门Python练习项目',
-    imgUrl: '//upload.jianshu.io/admin_banners/web_images/4682/cef3102cc521ac4b87a82b5c6f93300ba0aa21c8.png?imageMogr2/auto-orient/strip|imageView2/1/w/1250/h/540',
-    desc: '这10个项目，约有270000人学习过。 今天给大家盘点一下实验楼最热门的10个Python练习项目。第二名是《200 行 Python 代码实...'
-  }],
-  recommendList: [
-    {
-      id: 1,
-      imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-club-aa8bdf19f8cf729a759da42e4a96f366.png'
-    }, {
-      id: 2,
-      imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-7-1a0222c91694a1f38e610be4bf9669be.png'
-    },
-    {
-      id: 3,
-      imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-5-4ba25cf5041931a0ed2062828b4064cb.png'
-    }, {
-      id: 4,
-      imgUrl: 'http://cdn2.jianshu.io/assets/web/banner-s-6-c4d6335bfd688f2ca1115b42b04c28a7.png'
-    }
-  ],
-  writerList: [{
-    "id": 4790772,
-    "slug": "0f438ff0a55f",
-    "nickname": "茶点故事",
-    "avatar_source": "http://upload.jianshu.io/users/upload_avatars/4790772/388e473c-fe2f-40e0-9301-e357ae8f1b41.jpeg",
-    "total_likes_count": 13631,
-    "total_wordage": 552787,
-    "is_following_user": false
-  }, { "id": 2558050, "slug": "d99a7dfae9e4", "nickname": "阿栈", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/2558050/7761b285-2805-4534-9870-ba7dcc7538ec.jpg", "total_likes_count": 1453, "total_wordage": 468709, "is_following_user": false }, { "id": 5205317, "slug": "dbfdce352c0d", "nickname": "遛遛心情的溜妈", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/5205317/1179d71b-e7c6-4023-89e8-bba25f88272b.jpg", "total_likes_count": 29016, "total_wordage": 680603, "is_following_user": false }, { "id": 3730494, "slug": "ffc565d738a3", "nickname": "格列柯南", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/3730494/4a86a2a7-d5b9-47f1-969a-d8ef4711488b.jpg", "total_likes_count": 43506, "total_wordage": 740196, "is_following_user": false }, { "id": 13213889, "slug": "080bb4eac1c9", "nickname": "无限猴子", "avatar_source": "http://upload.jianshu.io/users/upload_avatars/13213889/7314c5cc-ca7f-4542-b914-2c8dffaf324d.jpg", "total_likes_count": 2074, "total_wordage": 388487, "is_following_user": false }]
+  topicList: [],
+  articleList: [],
+  recommendList: [],
+  writerList: []
 })
 
 
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case 'change_home_data':
+      return state.merge({
+        topList: fromJS(action.topList),
+        articleList: fromJS(action.articleList),
+        recommendList: fromJS(action.recommendList),
+        writerList: fromJS(action.writerList)
+      })
     default:
       return state
   }
