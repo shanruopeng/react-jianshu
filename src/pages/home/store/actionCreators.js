@@ -11,12 +11,34 @@ const changeHomeData = (result) => {
   }
 }
 
+const addHomeList = (list, nextPage) => {
+  return {
+    type: constants.ADD_AIRTICLE_LIST,
+    list: list,
+    nextPage
+  }
+}
+
 export const getHomeInfo = () => {
   return (dispatch) => {
     axios.get('/api/home.json').then((res) => {
       if (res.data.success) {
         const result = res.data.data
         const action = changeHomeData(result)
+        dispatch(action)
+      }
+    }).catch((err) => {
+      console.log(err)
+    })
+  }
+}
+
+export const getMoreList = (page) => {
+  return (dispatch) => {
+    axios.get('/api/homeList.json?page=' + page).then((res) => {
+      if (res.data.success) {
+        const result = res.data.data
+        const action = addHomeList(result, page + 1)
         dispatch(action)
       }
     }).catch((err) => {
