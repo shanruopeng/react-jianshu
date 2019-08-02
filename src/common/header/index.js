@@ -6,7 +6,7 @@ import { actionCreators } from './store'
 import { Link } from 'react-router-dom'
 class Header extends PureComponent {
   render () {
-    const { focused, list, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, login, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -18,7 +18,9 @@ class Header extends PureComponent {
           <NavItem className='right'>
             <i className="iconfont">&#xe636;</i>
           </NavItem>
-          <NavItem className='right'>登录</NavItem>
+          {
+            login ? <NavItem className='right'>退出</NavItem> : <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+          }
           <SearchWarpper>
             <CSSTransition
               in={focused}
@@ -89,7 +91,8 @@ const mapStateToProps = (state) => {
     list: state.getIn(['header', 'list']),
     mouseIn: state.getIn(['header', 'mouseIn']),
     page: state.getIn(['header', 'page']),
-    totalPage: state.getIn(['header', 'totalPage'])
+    totalPage: state.getIn(['header', 'totalPage']),
+    login: state.getIn(['login', 'login'])
   }
 }
 
