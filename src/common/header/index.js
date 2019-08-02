@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWarpper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoList, SearchInfoItem } from './style'
 import { actionCreators } from './store'
-
-class Header extends Component {
+import { Link } from 'react-router-dom'
+class Header extends PureComponent {
   render () {
     const { focused, list, handleInputFocus, handleInputBlur } = this.props
     return (
       <HeaderWrapper>
+        <Link to='/'>
         <Logo />
+        </Link>
         <Nav>
           <NavItem className='left active'>首页</NavItem>
           <NavItem className='left'>下载App</NavItem>
