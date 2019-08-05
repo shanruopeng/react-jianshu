@@ -1,6 +1,5 @@
 ### 简书项目开发过程
 
-<video src="https://github.com/shanruopeng/react-jianshu/blob/master/jianshu.mov" width="320" height="180" controls="controls"></video>
 
 #### 1-Header组件开发
 
