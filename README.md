@@ -1,6 +1,7 @@
 ### 简书项目开发过程
 
-
+![首页](https://github.com/shanruopeng/react-jianshu/blob/master/index.png)
+![详情](https://github.com/shanruopeng/react-jianshu/blob/master/detail.png)
 #### 1-Header组件开发
 
 - 项目目录搭建，Styled-Components与Reset.css的结合使用
