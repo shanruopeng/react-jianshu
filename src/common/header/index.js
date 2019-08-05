@@ -3,10 +3,11 @@ import { CSSTransition } from 'react-transition-group'
 import { connect } from 'react-redux'
 import { HeaderWrapper, Logo, Nav, NavItem, NavSearch, Addition, Button, SearchWarpper, SearchInfo, SearchInfoTitle, SearchInfoSwitch, SearchInfoList, SearchInfoItem } from './style'
 import { actionCreators } from './store'
+import { actionCreators as loginActionCreators } from '../../pages/login/store'
 import { Link } from 'react-router-dom'
 class Header extends PureComponent {
   render () {
-    const { focused, list, login, handleInputFocus, handleInputBlur } = this.props
+    const { focused, list, login, handleInputFocus, handleInputBlur, handleLogout } = this.props
     return (
       <HeaderWrapper>
         <Link to='/'>
@@ -19,7 +20,7 @@ class Header extends PureComponent {
             <i className="iconfont">&#xe636;</i>
           </NavItem>
           {
-            login ? <NavItem className='right'>退出</NavItem> : <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
+            login ? <NavItem className='right' onClick={handleLogout}>退出</NavItem> : <Link to='/login'><NavItem className='right'>登录</NavItem></Link>
           }
           <SearchWarpper>
             <CSSTransition
@@ -125,6 +126,9 @@ const mapDispatchToProps = (dispatch) => {
       } else {
         dispatch(actionCreators.changePage(1))
       }
+    },
+    handleLogout(){
+      dispatch(loginActionCreators.logout()) 
     }
   }
 }
