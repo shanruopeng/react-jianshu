@@ -1,3 +1,5 @@
+### 简书项目开发过程
+
 #### 1-Header组件开发
 
 - 项目目录搭建，Styled-Components与Reset.css的结合使用
@@ -16,10 +18,35 @@
 - 换页旋转动画效果的实现
 
 
+#### 2-首页开发
+
+- 在React中使用路由功能
+- 首页组件的拆分
+- 首页专题区域布局及reducer的设计
+- 首页文章列表制作
+- 首页推荐部分代码编写
+- 首页异步数据获取
+- 异步操作代码拆分优化
+- 实现加载更多功能
+- 返回顶部功能实现
+- 首页性能优化及路由跳转
 
 
+#### 3-详情页面和登录功能开发
 
-### 项目执行 **This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
+- 详情页面布局
+- 使用redux管理详情页面数据
+- 异步获取数据
+- 页面路由参数的传递
+- 登录页面布局
+- 登录功能实现
+- 登录鉴权及代码优化
+- 异步组件及withRouter路由方法的使用
+
+### 项目执行 
+
+**This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).**
+
 ####  1、将项目克隆到本地，cd到react-jianshu
 ```javascript
 git clone https://github.com/shanruopeng/react-jianshu.git
