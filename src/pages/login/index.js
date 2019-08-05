@@ -6,7 +6,6 @@ import { actionCreators } from './store'
 class Login extends PureComponent {
   render () {
     const { loginStatus } = this.props
-    console.log(loginStatus)
     if (!loginStatus){
       return (
         <LoginWrapper>
